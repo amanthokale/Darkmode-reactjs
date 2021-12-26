@@ -48,7 +48,7 @@ export default function Textform(props) {
           Convert to uppercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-0 my-2"
           onClick={Dclick}
           // onchange={Dchange}
         >
@@ -56,7 +56,7 @@ export default function Textform(props) {
         </button>
 
         <button
-          className="btn btn-danger mx-2 "
+          className="btn btn-danger mx-3 "
           onClick={clear}
           // onchange={Dchange}
         >
