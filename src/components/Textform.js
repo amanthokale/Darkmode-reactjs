@@ -76,7 +76,7 @@ export default function Textform(props) {
         </div>
 
         <div className="container my-3">
-          <h6>Preview</h6>
+          <h6>Preview-</h6>
           <p>{text.length > 0 ? text : 'Enter text to preview'}</p>
         </div>
       </div>
