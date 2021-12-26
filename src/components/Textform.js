@@ -70,7 +70,7 @@ export default function Textform(props) {
             Words
           </p>
           <p>
-            wil require {0.008 * text.split(' ').length} min to read these
+            You wil require {0.008 * text.split(' ').length} min to read these
             word(s)
           </p>
         </div>
