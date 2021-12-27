@@ -1,8 +1,8 @@
 # Darkmode-reactjs
 
-A website which has a darkmode feature which allows user to change display mode from light to dark
-and it also has some text-utility functions 
-which helps user to change the case of their text to (uppercase/lowercase).
+Responsive website which has a darkmode feature in it which allows user to change display mode from light to dark
+,it also has some text-utility functions 
+which helps user to change the case of text to (uppercase/lowercase).
 
 
 
