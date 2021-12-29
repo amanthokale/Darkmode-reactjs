@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './style.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
-// import About from './components/About';
+import About from './components/About';
 import Alert from './components/Alert';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function App() {
   //DArkmode
@@ -38,20 +38,31 @@ export default function App() {
   //components
   return (
     <>
-      <Navbar
-        title="ReactJs"
-        about="State"
-        mode={mode}
-        togglemode={togglemode}
-      />
-      {/* <Navbar /> */}
-      <Alert alert={alert} />
-      <Textform
-        givealert={givealert}
-        heading="Enter the text to analyze"
-        mode={mode}
-      />
-      {/* <About /> */}
+      <Router>
+        <Navbar
+          title="ReactJs"
+          about="About us"
+          mode={mode}
+          togglemode={togglemode}
+          textutil="Textutil"
+        />
+        <Alert alert={alert} />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Textform
+                givealert={givealert}
+                heading="Enter the text to analyze"
+                mode={mode}
+              />
+            }
+          />
+
+          <Route path="/about" element={<About mode={mode} />} />
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -18,6 +18,15 @@ export default function Textform(props) {
     setText('');
     props.givealert('Text cleared', 'success');
   };
+  const RXS = () => {
+    let newtext = text.split(/[ ]+/);
+    setText(newtext.join(' '));
+    props.givealert('Extra spaces removed', 'success');
+  };
+  const CTC = () => {
+    navigator.clipboard.writeText(text);
+    props.givealert('Text copied to clipboard', 'success');
+  };
   const changer = (event) => {
     setText(event.target.value);
   };
@@ -44,19 +53,38 @@ export default function Textform(props) {
             onChange={changer}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={Upclick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-1"
+          onClick={Upclick}
+        >
           Convert to uppercase
         </button>
         <button
-          className="btn btn-primary mx-1 my-2"
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={Dclick}
-          // onchange={Dchange}
         >
           Convert to Lowercase
         </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={RXS}
+        >
+          Remove extra spaces
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={CTC}
+        >
+          Copy to clipboard
+        </button>
 
         <button
-          className="btn btn-danger mx-2 "
+          disabled={text.length === 0}
+          className="btn btn-danger mx-2 my-1"
           onClick={clear}
           // onchange={Dchange}
         >
@@ -66,18 +94,29 @@ export default function Textform(props) {
         <div className="container my-5">
           <h5>Summary</h5>
           <p className="my-3">
-            There are {text.length} characters and {text.split(' ').length}{' '}
+            There are {text.length} characters and {'  '}
+            {
+              text.split(/\s+/).filter((element) => {
+                return element.length != 0;
+              }).length
+            }
+            {'  '}
             Words
           </p>
           <p>
-            You wil require {0.008 * text.split(' ').length} min to read these
-            word(s)
+            You wil require{' '}
+            {0.008 *
+              text.split(/\s+/).filter((element) => {
+                return element.length != 0;
+              }).length}
+            {'  '}
+            min to read these word(s)
           </p>
         </div>
 
         <div className="container my-3">
           <h6>Preview-</h6>
-          <p>{text.length > 0 ? text : 'Enter text to preview'}</p>
+          <p>{text.length > 0 ? text : 'Nothing to preview'}</p>
         </div>
       </div>
     </>
